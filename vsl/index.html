@@ -7,16 +7,17 @@
 
   <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Manrope', sans-serif;
     }
 
     body {
+      font-family: 'Manrope', sans-serif;
       background: radial-gradient(circle at top, #57013e, #000000 70%);
       color: #ffffff;
       min-height: 100vh;
@@ -75,9 +76,9 @@
     .video-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* Proporção 16:9 */
+      padding-bottom: 56.25%;
       border-radius: 14px;
-      overflow: visible; /* MUDADO DE hidden PARA visible */
+      overflow: visible;
       box-shadow: 0 0 40px rgba(255, 0, 184, 0.25);
       background: #000;
       z-index: 2;
@@ -96,79 +97,373 @@
       width: 100%;
       height: 100%;
       display: block;
-      z-index: 10; /* ADICIONADO z-index maior */
+      z-index: 10;
     }
 
-    /* ===== PILARES ===== */
-    .pilares {
-      margin-top: 70px;
-      text-align: center;
-    }
-
-    .pilares h2 {
-      font-size: 2.1rem;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 40px;
-    }
-
-    .pilares h2 span {
-      color: #ff00b8;
-    }
-
-    .pilares-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
-
-    .pilar-card {
-      background: linear-gradient(180deg, #3a3a3a, #2a2a2a);
-      border-radius: 16px;
-      padding: 26px 26px 30px;
-      position: relative;
-      text-align: left;
-      box-shadow: 0 0 30px rgba(255, 0, 184, 0.15);
-    }
-
-    .pilar-card::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
+    /* ========== CARROSSEL STYLES ========== */
+    .carousel-section {
+      padding: 60px 0;
       width: 100%;
-      height: 4px;
-      background: #ff00b8;
-      border-radius: 0 0 16px 16px;
     }
 
-    .pilar-content {
+    .header-section {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 0 20px;
+    }
+
+    .main-title {
+      font-size: 48px;
+      font-weight: 300;
+      color: white;
+      margin-bottom: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .main-subtitle {
+      font-size: 52px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff0080, #ff69b4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 0 0 60px 0;
+    }
+
+    .carousel-wrapper {
       display: flex;
-      gap: 14px;
-      align-items: flex-start;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 24px;
+      padding: 0 24px;
     }
 
-    .pilar-check {
-      width: 26px;
-      height: 26px;
-      min-width: 26px;
-      border-radius: 6px;
-      background: #ff00b8;
+    .card {
+      min-width: 340px;
+      height: 600px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, 
+          rgba(139, 0, 139, 0.15) 0%, 
+          rgba(75, 0, 130, 0.45) 50%,
+          rgba(25, 0, 51, 0.85) 100%);
+      z-index: 1;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      filter: brightness(1.15) contrast(1.2) saturate(1.3);
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+    }
+
+    .module-badge {
+      background: linear-gradient(90deg, #ff0080, #ff69b4);
+      color: white;
+      padding: 8px 24px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+
+    .card-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      text-transform: uppercase;
+      line-height: 1.1;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 0, 128, 0.3);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .nav-button:hover {
+      background: rgba(255, 0, 128, 0.6);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .nav-button.prev {
+      left: 24px;
+    }
+
+    .nav-button.next {
+      right: 24px;
+    }
+
+    .price-section {
+      text-align: center;
+      margin-top: 40px;
+      color: white;
+      font-size: 18px;
+      font-family: 'Poppins', sans-serif;
+      padding: 0 20px;
+    }
+
+    .price {
+      color: #ff0080;
+      font-weight: 700;
+      font-size: 32px;
+    }
+
+    /* ========== OFERTA STYLES ========== */
+    .offer-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+    }
+
+    .offer-card {
+      background: linear-gradient(135deg, #ff0080 0%, #ff1493 100%);
+      border-radius: 30px;
+      padding: 40px 50px;
+      max-width: 750px;
+      width: 100%;
+      box-shadow: 0 30px 80px rgba(255, 0, 128, 0.4);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offer-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    .offer-title {
+      font-size: 44px;
       font-weight: 800;
-      color: #000;
+      color: white;
+      margin-bottom: 24px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      letter-spacing: -1px;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .pilar-text {
-      font-size: 1rem;
-      line-height: 1.55;
-      color: #eaeaea;
+    .benefits-list {
+      list-style: none;
+      margin-bottom: 24px;
     }
 
-    .pilar-full {
-      grid-column: 1 / -1;
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .checkmark {
+      width: 24px;
+      height: 24px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .checkmark svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .investment-text {
+      color: white;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 18px;
+      line-height: 1.6;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .investment-text strong {
+      font-weight: 700;
+    }
+
+    .price-container {
+      margin: 24px 0;
+    }
+
+    .installment-price {
+      font-size: 56px;
+      font-weight: 800;
+      color: white;
+      line-height: 1;
+      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+      margin-bottom: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .full-price {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .cta-button {
+      background: #00d100;
+      color: white;
+      font-size: 22px;
+      font-weight: 700;
+      padding: 16px 50px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 209, 0, 0.4);
+      transition: all 0.3s ease;
+      text-transform: capitalize;
+      margin: 24px 0;
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .cta-button:hover {
+      background: #00b800;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0, 209, 0, 0.5);
+    }
+
+    .cta-button:active {
+      transform: translateY(-1px);
+    }
+
+    .disclaimer {
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: 0 auto;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .disclaimer strong {
+      font-weight: 700;
+    }
+
+    /* ========== ANIMAÇÕES ========== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      animation: fadeInUp 0.6s ease-out backwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+
+    .offer-title {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .benefit-item {
+      animation: fadeInUp 0.6s ease-out backwards;
+    }
+
+    .benefit-item:nth-child(1) { animation-delay: 0.1s; }
+    .benefit-item:nth-child(2) { animation-delay: 0.2s; }
+    .benefit-item:nth-child(3) { animation-delay: 0.3s; }
+    .benefit-item:nth-child(4) { animation-delay: 0.4s; }
+    .benefit-item:nth-child(5) { animation-delay: 0.5s; }
+
+    .price-container {
+      animation: fadeInUp 0.8s ease-out 0.6s backwards;
+    }
+
+    .cta-button {
+      animation: fadeInUp 0.8s ease-out 0.7s backwards;
     }
 
     /* ===== RESPONSIVO ===== */
@@ -189,12 +484,76 @@
         display: none;
       }
 
-      .pilares h2 {
-        font-size: 1.7rem;
+      .main-title {
+        font-size: 32px;
       }
 
-      .pilares-grid {
-        grid-template-columns: 1fr;
+      .main-subtitle {
+        font-size: 36px;
+      }
+
+      .carousel-section {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .carousel-wrapper {
+        padding: 0 5vw;
+        gap: 16px;
+        justify-content: flex-start;
+      }
+
+      .card {
+        min-width: 90vw;
+        max-width: 90vw;
+        height: 650px;
+      }
+
+      .card-title {
+        font-size: 28px;
+      }
+
+      .offer-card {
+        padding: 30px 25px;
+        border-radius: 25px;
+      }
+
+      .offer-title {
+        font-size: 32px;
+      }
+
+      .benefit-item {
+        font-size: 16px;
+      }
+
+      .installment-price {
+        font-size: 44px;
+      }
+
+      .cta-button {
+        font-size: 18px;
+        padding: 14px 40px;
+      }
+
+      .investment-text {
+        font-size: 14px;
+      }
+
+      .disclaimer {
+        font-size: 11px;
+      }
+
+      .nav-button {
+        width: 48px;
+        height: 48px;
+      }
+
+      .nav-button.prev {
+        left: 10px;
+      }
+
+      .nav-button.next {
+        right: 10px;
       }
     }
 
@@ -217,7 +576,7 @@
 
   <!-- VTURB PRELOADS DS -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<link rel="preload" href="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/695c2a7910ea8bb29001a846/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/69608437e9321dd80f634e3a/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
 <link rel="preload" href="https://cdn.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/695b2589a64ebc639e763a28/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
@@ -226,75 +585,40 @@
 <link rel="dns-prefetch" href="https://api.vturb.com.br">
 
  <!-- Meta Pixel Code -->
-
 <script>
-
 !function(f,b,e,v,n,t,s)
-
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-
 n.queue=[];t=b.createElement(e);t.async=!0;
-
 t.src=v;s=b.getElementsByTagName(e)[0];
-
 s.parentNode.insertBefore(t,s)}(window, document,'script',
-
 'https://connect.facebook.net/en_US/fbevents.js');
-
 fbq('init', '1559800362001223');
-
 fbq('track', 'PageView');
-
 </script>
-
 <noscript><img height="1" width="1" style="display:none"
-
 src="https://www.facebook.com/tr?id=1559800362001223&ev=PageView&noscript=1"
-
 /></noscript>
-
 <!-- End Meta Pixel Code -->
-
 
   <!-- Meta Pixel Code -->
-
 <script>
-
 !function(f,b,e,v,n,t,s)
-
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-
 n.queue=[];t=b.createElement(e);t.async=!0;
-
 t.src=v;s=b.getElementsByTagName(e)[0];
-
 s.parentNode.insertBefore(t,s)}(window, document,'script',
-
 'https://connect.facebook.net/en_US/fbevents.js');
-
 fbq('init', '4079932298944802');
-
 fbq('track', 'PageView');
-
 </script>
-
 <noscript><img height="1" width="1" style="display:none"
-
 src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
-
 /></noscript>
-
 <!-- End Meta Pixel Code -->
-
-  
 
   <!-- Script Utm -->
   <script>
@@ -319,17 +643,626 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
       <div class="video-bg"></div>
 
       <div class="video-wrapper">
-       <vturb-smartplayer id="vid-695c2a7910ea8bb29001a846" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/695c2a7910ea8bb29001a846/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+       <vturb-smartplayer id="vid-69608437e9321dd80f634e3a" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/69608437e9321dd80f634e3a/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
     </div>
-
   </div>
+<!-- DTC -->
+    <div id="elementoOculto" data-show-delay="465" style="display: none">
+   <!-- SEÇÃO DO CARROSSEL -->
+    <section class="carousel-section">
+        <div class="header-section">
+            <h2 class="main-title">Veja só o que você aprenderá</h2>
+            <h1 class="main-subtitle">dentro do Curso:</h1>
+        </div>
 
+        <div class="carousel-container">
+            <button class="nav-button prev" onclick="moveCarousel(-1)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <!-- Card 1 -->
+                <div class="card">
+                    <img class="card-image" src="imagens/pene.jpg" alt="Penetração">
+                    <div class="card-content">
+                        
+                    </div>
+                </div>
+
+               
+
+              
+
+                <!-- Card 4 -->
+                <div class="card">
+                    <img class="card-image" src="imagens/capa1ssas-Recupfsafsaerado-1.jpg" alt="Guia dos Vibradores">
+                    <div class="card-content">
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="card">
+                    <img class="card-image" src="imagens/PRESEXO.jpg" alt="Pré Sexo">
+                    <div class="card-content">
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="card">
+                    <img class="card-image" src="imagens/capa1ssas-RecupfDSA2ASSsafsaerado-1.jpg" alt="Masturbação">
+                    <div class="card-content">
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="card">
+                    <img class="card-image" src="imagens/capa1ssas-Recupfasafsaerado-1.jpg" alt="Sexo Oral">
+                    <div class="card-content">
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="card">
+                    <img class="card-image" src="imagens/capa1ssas-RecupfDSAestrSsafsaerado-1.jpg" alt="Estímulos">
+                    <div class="card-content">
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="card">
+                    <img class="card-image" src="imagens/pene.jpg" alt="Penetração">
+                    <div class="card-content">
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-button next" onclick="moveCarousel(1)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <div class="price-section">
+            <p>Curso completo no valor de <span class="price">R$ 397,90</span> mas não hoje.</p>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE OFERTA -->
+    <section class="offer-section">
+        <div class="offer-card">
+            <div class="content-wrapper">
+                <h1 class="offer-title">Curso Explícito</h1>
+                
+                <ul class="benefits-list">
+                    <li class="benefit-item">
+                        <span class="checkmark">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>Conteúdo explícito</span>
+                    </li>
+                    <li class="benefit-item">
+                        <span class="checkmark">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>Acesso por 1 ano</span>
+                    </li>
+                    <li class="benefit-item">
+                        <span class="checkmark">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>Manual Massagem Tântrica</span>
+                    </li>
+                    <li class="benefit-item">
+                        <span class="checkmark">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>30% off na Mentoria</span>
+                    </li>
+                    
+                </ul>
+
+                <p class="investment-text">
+                    O investimento necessário para se <strong>tornar uma máquina na cama</strong>, é de...
+                </p>
+
+                <div class="price-container">
+                    <div class="installment-price">4 x R$ 18,08</div>
+                    <div class="full-price">ou R$ 69.90 reais à vista.</div>
+                </div>
+<a href="https://checkout.payt.com.br/350357bc1249204b0b1d14be9940e5a5">
+                <button class="cta-button">Garantir curso Explícito</button>
+</a>
+                <p class="disclaimer">
+                    <strong>O curso explícito foi gravado com modelos profissionais.</strong> Todo o conteúdo possui propósito educativo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let currentPosition = 0;
+        const wrapper = document.getElementById('carouselWrapper');
+        const cards = document.querySelectorAll('.card');
+        let cardWidth = 340 + 24;
+        let visibleCards = 4;
+        let autoPlayInterval;
+        let isTransitioning = false;
+
+        // Detecta se é mobile e ajusta variáveis
+        function updateCarouselSettings() {
+            if (window.innerWidth <= 768) {
+                visibleCards = 1;
+                cardWidth = window.innerWidth * 0.90 + 16; // 90vw + gap
+            } else {
+                visibleCards = 4;
+                cardWidth = 340 + 24;
+            }
+        }
+
+        // Atualiza ao carregar e ao redimensionar
+        updateCarouselSettings();
+        window.addEventListener('resize', () => {
+            updateCarouselSettings();
+            // Reposiciona o carrossel após resize
+            const offset = -currentPosition * cardWidth;
+            wrapper.style.transform = `translateX(${offset}px)`;
+        });
+
+        function moveCarousel(direction) {
+            if (isTransitioning) return;
+            
+            isTransitioning = true;
+            currentPosition += direction;
+
+            const maxPosition = cards.length - visibleCards;
+            
+            if (currentPosition < 0) {
+                currentPosition = 0;
+            } else if (currentPosition > maxPosition) {
+                currentPosition = maxPosition;
+            }
+
+            const offset = -currentPosition * cardWidth;
+            wrapper.style.transform = `translateX(${offset}px)`;
+
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 800);
+
+            resetAutoPlay();
+        }
+
+        function autoPlay() {
+            autoPlayInterval = setInterval(() => {
+                if (currentPosition >= cards.length - visibleCards) {
+                    // Volta ao início
+                    currentPosition = 0;
+                    wrapper.style.transition = 'none';
+                    wrapper.style.transform = `translateX(0px)`;
+                    
+                    setTimeout(() => {
+                        wrapper.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    }, 50);
+                } else {
+                    moveCarousel(1);
+                }
+            }, 4000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            autoPlay();
+        }
+
+        let startX = 0;
+        let isDragging = false;
+
+        wrapper.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        wrapper.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+
+        wrapper.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    moveCarousel(1);
+                } else {
+                    moveCarousel(-1);
+                }
+            }
+            isDragging = false;
+        });
+
+        wrapper.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            wrapper.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+
+        document.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            const endX = e.clientX;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    moveCarousel(1);
+                } else {
+                    moveCarousel(-1);
+                }
+            }
+            isDragging = false;
+            wrapper.style.cursor = 'grab';
+        });
+
+        autoPlay();
+
+        wrapper.addEventListener('mouseenter', () => {
+            clearInterval(autoPlayInterval);
+        });
+
+        wrapper.addEventListener('mouseleave', () => {
+            autoPlay();
+        });
+    </script>
+    </div>
   <footer class="footer">
     <p>
       Este site não faz parte do Facebook ou do Facebook Inc. e não é endossado por eles. Facebook é uma marca registrada independente. O conteúdo apresentado é de caráter educacional. Não garantimos resultados específicos, pois eles variam de acordo com o esforço, dedicação e outros fatores fora do nosso controle. Depoimentos refletem experiências reais, mas não representam resultados garantidos.
     </p>
   </footer>
+<script>
+  // Flag para controlar se os links jÃƒÆ’Ã‚Â¡ foram configurados
+let linksConfigured = false;
+
+function setupLinks() {
+    if (linksConfigured) return;
+
+    if (typeof MONTHLY_REFILLS_LINK !== 'undefined' && 
+        typeof BEST_VALUE_LINK !== 'undefined' && 
+        typeof MOST_POPULAR_LINK !== 'undefined') {
+
+        function preserveParams(element, newHref) {
+            if (!element) return;
+            if (element.dataset.processed === 'true') return;
+
+            try {
+                const currentUrl = new URL(window.location.href); // Pegando da URL atual da pÃ¡gina
+                const finalUrl = new URL(newHref);
+
+                // Copia todos os parÃ¢metros da URL atual
+                currentUrl.searchParams.forEach((value, key) => {
+                    finalUrl.searchParams.set(key, value);
+                });
+
+                element.href = finalUrl.toString();
+                element.dataset.processed = 'true';
+            } catch (error) {
+                console.error('Erro ao processar link:', error);
+            }
+        }
+
+        ['1', '2', '3'].forEach(suffix => {
+            const monthlyElement = document.getElementById('monthlyLink' + suffix);
+            if (monthlyElement) preserveParams(monthlyElement, MONTHLY_REFILLS_LINK);
+            
+            const bestValueElement = document.getElementById('bestValueLink' + suffix);
+            if (bestValueElement) preserveParams(bestValueElement, BEST_VALUE_LINK);
+            
+            const popularElement = document.getElementById('popularLink' + suffix);
+            if (popularElement) preserveParams(popularElement, MOST_POPULAR_LINK);
+        });
+
+        // Atualiza todos os links da pÃ¡gina
+        const allLinks = document.querySelectorAll('a[href]');
+        allLinks.forEach(link => {
+            try {
+                const href = link.getAttribute('href');
+                // Apenas processa links absolutos e internos (nÃ£o Ã¢ncoras ou javascript)
+                if (href && !href.startsWith('javascript:') && !href.startsWith('#') && !link.dataset.processed) {
+                    const currentUrl = new URL(window.location.href);
+                    const finalUrl = new URL(link.href, currentUrl.origin);
+
+                    currentUrl.searchParams.forEach((value, key) => {
+                        finalUrl.searchParams.set(key, value);
+                    });
+
+                    link.href = finalUrl.toString();
+                    link.dataset.processed = 'true';
+                }
+            } catch (error) {
+                console.error('Erro ao processar link global:', error);
+            }
+        });
+
+        linksConfigured = true;
+    }
+}
+
+
+
+let animationStarted = false;
+
+
+function startPulseAnimation() {
+    if (animationStarted) return; 
+    
+    animationStarted = true;
+    const btns = document.querySelectorAll('.best-value-btn');
+    
+    btns.forEach(btn => {
+        // Adiciona transiÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o suave
+        btn.style.transition = 'transform 1s ease-in-out';
+        
+        // Inicia a animaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o
+        setInterval(() => {
+            btn.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+            }, 1000);
+        }, 2000);
+    });
+}
+
+
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && 
+            mutation.attributeName === 'style' && 
+            !linksConfigured) {
+            setupLinks();
+            startPulseAnimation();
+        }
+    });
+});
+
+
+window.addEventListener('load', () => {
+    const elementoOculto = document.getElementById('elementoOculto');
+    if (elementoOculto) {
+        observer.observe(elementoOculto, {
+            attributes: true,
+            subtree: true,
+            childList: true
+        });
+    }
+    
+    
+    setupLinks();
+    startPulseAnimation();
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    /* ConfiguraÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o inicial */
+    var elementoOculto = document.getElementById('elementoOculto');
+    var SECONDS_TO_DISPLAY = 0;
+    var elementoJaMostrado = false;
+    
+    // Pegar o tempo do data-show-delay
+    if (elementoOculto) {
+        SECONDS_TO_DISPLAY = parseInt(elementoOculto.getAttribute('data-show-delay')) || 0;
+    } else {
+        return;
+    }
+
+    // Chave ÃƒÆ’Ã‚Âºnica para localStorage baseada no tempo definido
+    var storageKey = 'elementoMostrado_' + SECONDS_TO_DISPLAY;
+    
+    /* FunÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o para mostrar o elemento */
+    function showHiddenElement() {
+        if (elementoJaMostrado) return;
+        
+        elementoOculto.style.display = "block";
+        elementoOculto.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start'
+        });
+        
+        elementoJaMostrado = true;
+        
+        // Salvar no localStorage que o elemento jÃƒÆ’Ã‚Â¡ foi mostrado
+        try {
+            localStorage.setItem(storageKey, 'true');
+        } catch (e) {
+            // Em caso de erro com localStorage (ex: modo privativo), apenas ignora
+        }
+    }
+
+    /* Monitorar o tempo do vÃƒÆ’Ã‚Â­deo */
+    function startWatchVideoProgress() {
+        if (typeof smartplayer === 'undefined' || !smartplayer.instances || !smartplayer.instances.length) {
+            setTimeout(startWatchVideoProgress, 1000);
+            return;
+        }
+
+        const player = smartplayer.instances[0];
+        
+        if (!player.video) {
+            setTimeout(startWatchVideoProgress, 1000);
+            return;
+        }
+
+        // Adicionar listener para timeupdate
+        player.on('timeupdate', () => {
+            if (player.video.currentTime >= SECONDS_TO_DISPLAY) {
+                showHiddenElement();
+            }
+        });
+
+        // Adicionar listener para play e verificar tempo inicial
+        player.on('play', () => {
+            if (player.video.currentTime >= SECONDS_TO_DISPLAY) {
+                showHiddenElement();
+            }
+        });
+    }
+
+    // Verificar se o elemento jÃƒÆ’Ã‚Â¡ foi mostrado anteriormente
+    try {
+        if (localStorage.getItem(storageKey) === 'true') {
+            showHiddenElement();
+        }
+    } catch (e) {
+        // Em caso de erro com localStorage, continua normalmente
+    }
+
+    // Iniciar monitoramento
+    setTimeout(startWatchVideoProgress, 1000);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    if (faqToggles) {
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const answer = toggle.nextElementSibling;
+                const icon = toggle.querySelector('svg');
+                
+                if (answer && icon) {
+                    answer.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                }
+            });
+        });
+    }
+    
+    updatePublicationDate(); 
+    updateViewerCount();
+    startCountdown();
+});
+
+//new
+function updatePublicationDate() {
+    const date = new Date();
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    const dayName = days[date.getDay()];
+    const monthName = months[date.getMonth()];
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    const formattedDate = `${dayName}, ${day}  ${monthName} ${year}`;
+    
+    // Update all elements with the publication-date class
+    const dateElements = document.querySelectorAll('.publication-date');
+    dateElements.forEach(element => {
+        element.textContent = formattedDate;
+    });
+}
+
+
+function updateViewerCount() {
+    let num = 400;
+    let increment = Math.floor(Math.random() * 2) + 2;
+    let timer;
+    
+    const pessoasElement = document.getElementById('pessoasAssistindo');
+    if (!pessoasElement) return; // Exit if element doesn't exist
+    
+    if (timer) {
+        clearInterval(timer);
+    }
+    
+    pessoasElement.textContent = num;
+    
+    timer = setInterval(function() {
+        num += increment;
+        pessoasElement.textContent = num;
+        if (num >= 1500) {
+            num = 602;
+        }
+        increment = Math.floor(Math.random() * 2) + 2;
+    }, 2000);
+}
+
+function startCountdown() {
+    const countdownElements = document.querySelectorAll('.countdown-timer');
+    if (!countdownElements.length) return;
+
+    countdownElements.forEach(countdownElement => {
+        // Only start if the element is visible
+        if (window.getComputedStyle(countdownElement).display === 'none') return;
+
+        // Store timer in element's dataset to manage multiple instances
+        if (countdownElement.dataset.timer) {
+            clearInterval(parseInt(countdownElement.dataset.timer));
+        }
+
+        let minutes = 16;
+        let seconds = 42;
+
+        function updateDisplay() {
+            const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            countdownElement.textContent = formattedTime;
+        }
+
+        const timer = setInterval(() => {
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    clearInterval(timer);
+                    minutes = 16;
+                    seconds = 42;
+                    updateDisplay();
+                    startCountdown(); // Restart countdown
+                    return;
+                }
+                minutes--;
+                seconds = 59;
+            } else {
+                seconds--;
+            }
+            updateDisplay();
+        }, 1000);
+
+        countdownElement.dataset.timer = timer;
+        updateDisplay();
+    });
+}
+
+// FAQ Toggle functionality
+function toggleFAQ(id) {
+    const answer = document.querySelector(`#faq-${id}`);
+    const icon = document.querySelector(`#faq-icon-${id}`);
+    
+    if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        answer.classList.add('block');
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+    } else {
+        answer.classList.add('hidden');
+        answer.classList.remove('block');
+        icon.classList.add('fa-plus');
+        icon.classList.remove('fa-minus');
+    }
+}
+</script>
 </body>
 </html>
-
-
