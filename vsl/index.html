@@ -142,6 +142,7 @@
       transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       gap: 24px;
       padding: 0 24px;
+      touch-action: pan-y; /* IMPORTANTE: Permite scroll vertical */
     }
 
     .card {
@@ -869,20 +870,36 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
         }
 
         let startX = 0;
+        let startY = 0;
         let isDragging = false;
+        let hasMoved = false;
 
+        // CORREÇÃO: Eventos touch melhorados
         wrapper.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
             isDragging = true;
-        });
+            hasMoved = false;
+        }, { passive: true });
 
         wrapper.addEventListener('touchmove', (e) => {
             if (!isDragging) return;
-            e.preventDefault();
-        });
+            
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            const diffX = Math.abs(currentX - startX);
+            const diffY = Math.abs(currentY - startY);
+            
+            // Só previne o scroll se o movimento horizontal for maior que o vertical
+            if (diffX > diffY && diffX > 10) {
+                e.preventDefault();
+                hasMoved = true;
+            }
+        }, { passive: false });
 
         wrapper.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
+            if (!isDragging || !hasMoved) return;
+            
             const endX = e.changedTouches[0].clientX;
             const diff = startX - endX;
 
@@ -894,8 +911,10 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
                 }
             }
             isDragging = false;
-        });
+            hasMoved = false;
+        }, { passive: true });
 
+        // Mouse events para desktop
         wrapper.addEventListener('mousedown', (e) => {
             startX = e.clientX;
             isDragging = true;
@@ -940,7 +959,7 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
     </p>
   </footer>
 <script>
-  // Flag para controlar se os links jÃƒÆ’Ã‚Â¡ foram configurados
+  // Flag para controlar se os links já foram configurados
 let linksConfigured = false;
 
 function setupLinks() {
@@ -955,10 +974,9 @@ function setupLinks() {
             if (element.dataset.processed === 'true') return;
 
             try {
-                const currentUrl = new URL(window.location.href); // Pegando da URL atual da pÃ¡gina
+                const currentUrl = new URL(window.location.href);
                 const finalUrl = new URL(newHref);
 
-                // Copia todos os parÃ¢metros da URL atual
                 currentUrl.searchParams.forEach((value, key) => {
                     finalUrl.searchParams.set(key, value);
                 });
@@ -981,12 +999,10 @@ function setupLinks() {
             if (popularElement) preserveParams(popularElement, MOST_POPULAR_LINK);
         });
 
-        // Atualiza todos os links da pÃ¡gina
         const allLinks = document.querySelectorAll('a[href]');
         allLinks.forEach(link => {
             try {
                 const href = link.getAttribute('href');
-                // Apenas processa links absolutos e internos (nÃ£o Ã¢ncoras ou javascript)
                 if (href && !href.startsWith('javascript:') && !href.startsWith('#') && !link.dataset.processed) {
                     const currentUrl = new URL(window.location.href);
                     const finalUrl = new URL(link.href, currentUrl.origin);
@@ -1007,10 +1023,7 @@ function setupLinks() {
     }
 }
 
-
-
 let animationStarted = false;
-
 
 function startPulseAnimation() {
     if (animationStarted) return; 
@@ -1019,10 +1032,8 @@ function startPulseAnimation() {
     const btns = document.querySelectorAll('.best-value-btn');
     
     btns.forEach(btn => {
-        // Adiciona transiÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o suave
         btn.style.transition = 'transform 1s ease-in-out';
         
-        // Inicia a animaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o
         setInterval(() => {
             btn.style.transform = 'scale(1.05)';
             setTimeout(() => {
@@ -1031,7 +1042,6 @@ function startPulseAnimation() {
         }, 2000);
     });
 }
-
 
 const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -1044,7 +1054,6 @@ const observer = new MutationObserver((mutations) => {
     });
 });
 
-
 window.addEventListener('load', () => {
     const elementoOculto = document.getElementById('elementoOculto');
     if (elementoOculto) {
@@ -1055,29 +1064,23 @@ window.addEventListener('load', () => {
         });
     }
     
-    
     setupLinks();
     startPulseAnimation();
 });
 
-
 document.addEventListener("DOMContentLoaded", function() {
-    /* ConfiguraÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o inicial */
     var elementoOculto = document.getElementById('elementoOculto');
     var SECONDS_TO_DISPLAY = 0;
     var elementoJaMostrado = false;
     
-    // Pegar o tempo do data-show-delay
     if (elementoOculto) {
         SECONDS_TO_DISPLAY = parseInt(elementoOculto.getAttribute('data-show-delay')) || 0;
     } else {
         return;
     }
 
-    // Chave ÃƒÆ’Ã‚Âºnica para localStorage baseada no tempo definido
     var storageKey = 'elementoMostrado_' + SECONDS_TO_DISPLAY;
     
-    /* FunÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o para mostrar o elemento */
     function showHiddenElement() {
         if (elementoJaMostrado) return;
         
@@ -1089,15 +1092,12 @@ document.addEventListener("DOMContentLoaded", function() {
         
         elementoJaMostrado = true;
         
-        // Salvar no localStorage que o elemento jÃƒÆ’Ã‚Â¡ foi mostrado
         try {
             localStorage.setItem(storageKey, 'true');
         } catch (e) {
-            // Em caso de erro com localStorage (ex: modo privativo), apenas ignora
         }
     }
 
-    /* Monitorar o tempo do vÃƒÆ’Ã‚Â­deo */
     function startWatchVideoProgress() {
         if (typeof smartplayer === 'undefined' || !smartplayer.instances || !smartplayer.instances.length) {
             setTimeout(startWatchVideoProgress, 1000);
@@ -1111,14 +1111,12 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // Adicionar listener para timeupdate
         player.on('timeupdate', () => {
             if (player.video.currentTime >= SECONDS_TO_DISPLAY) {
                 showHiddenElement();
             }
         });
 
-        // Adicionar listener para play e verificar tempo inicial
         player.on('play', () => {
             if (player.video.currentTime >= SECONDS_TO_DISPLAY) {
                 showHiddenElement();
@@ -1126,16 +1124,13 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Verificar se o elemento jÃƒÆ’Ã‚Â¡ foi mostrado anteriormente
     try {
         if (localStorage.getItem(storageKey) === 'true') {
             showHiddenElement();
         }
     } catch (e) {
-        // Em caso de erro com localStorage, continua normalmente
     }
 
-    // Iniciar monitoramento
     setTimeout(startWatchVideoProgress, 1000);
 });
 
@@ -1160,7 +1155,6 @@ document.addEventListener('DOMContentLoaded', () => {
     startCountdown();
 });
 
-//new
 function updatePublicationDate() {
     const date = new Date();
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -1173,13 +1167,11 @@ function updatePublicationDate() {
 
     const formattedDate = `${dayName}, ${day}  ${monthName} ${year}`;
     
-    // Update all elements with the publication-date class
     const dateElements = document.querySelectorAll('.publication-date');
     dateElements.forEach(element => {
         element.textContent = formattedDate;
     });
 }
-
 
 function updateViewerCount() {
     let num = 400;
@@ -1187,7 +1179,7 @@ function updateViewerCount() {
     let timer;
     
     const pessoasElement = document.getElementById('pessoasAssistindo');
-    if (!pessoasElement) return; // Exit if element doesn't exist
+    if (!pessoasElement) return;
     
     if (timer) {
         clearInterval(timer);
@@ -1210,10 +1202,8 @@ function startCountdown() {
     if (!countdownElements.length) return;
 
     countdownElements.forEach(countdownElement => {
-        // Only start if the element is visible
         if (window.getComputedStyle(countdownElement).display === 'none') return;
 
-        // Store timer in element's dataset to manage multiple instances
         if (countdownElement.dataset.timer) {
             clearInterval(parseInt(countdownElement.dataset.timer));
         }
@@ -1233,7 +1223,7 @@ function startCountdown() {
                     minutes = 16;
                     seconds = 42;
                     updateDisplay();
-                    startCountdown(); // Restart countdown
+                    startCountdown();
                     return;
                 }
                 minutes--;
@@ -1249,7 +1239,6 @@ function startCountdown() {
     });
 }
 
-// FAQ Toggle functionality
 function toggleFAQ(id) {
     const answer = document.querySelector(`#faq-${id}`);
     const icon = document.querySelector(`#faq-icon-${id}`);
@@ -1269,4 +1258,3 @@ function toggleFAQ(id) {
 </script>
 </body>
 </html>
-
