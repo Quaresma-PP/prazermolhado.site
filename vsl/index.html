@@ -317,41 +317,43 @@
     .benefits-list {
       list-style: none;
       margin-bottom: 32px;
-      max-width: 500px;
+      max-width: 100%;
       margin-left: auto;
       margin-right: auto;
+      display: inline-block;
+      text-align: left;
     }
 
     .benefit-item {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
+      gap: 12px;
       color: white;
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
       font-family: 'Poppins', sans-serif;
       text-align: left;
     }
 
     .checkmark {
-      width: 28px;
-      height: 28px;
-      min-width: 28px;
-      min-height: 28px;
-      background: rgba(0, 0, 0, 0.3);
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
+      background: rgba(255, 255, 255, 0.25);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 0;
+      margin-top: 2px;
     }
 
     .checkmark svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
     }
 
     .benefit-text {
@@ -542,20 +544,25 @@
 
       .benefits-list {
         max-width: 100%;
-        padding: 0 10px;
+        padding: 0;
       }
 
       .benefit-item {
         font-size: 16px;
-        gap: 12px;
-        margin-bottom: 14px;
+        gap: 10px;
+        margin-bottom: 12px;
       }
 
       .checkmark {
-        width: 26px;
-        height: 26px;
-        min-width: 26px;
-        min-height: 26px;
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        min-height: 22px;
+      }
+
+      .checkmark svg {
+        width: 13px;
+        height: 13px;
       }
 
       .installment-price {
