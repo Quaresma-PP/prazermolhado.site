@@ -308,7 +308,7 @@
       font-size: 44px;
       font-weight: 800;
       color: white;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
       text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
       letter-spacing: -1px;
       font-family: 'Poppins', sans-serif;
@@ -316,37 +316,47 @@
 
     .benefits-list {
       list-style: none;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .benefit-item {
       display: flex;
       align-items: flex-start;
-      justify-content: center;
-      gap: 10px;
+      gap: 16px;
       color: white;
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
       font-family: 'Poppins', sans-serif;
+      text-align: left;
     }
 
     .checkmark {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      min-height: 28px;
       background: rgba(0, 0, 0, 0.3);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 2px;
+      margin-top: 0;
     }
 
     .checkmark svg {
       width: 16px;
       height: 16px;
+    }
+
+    .benefit-text {
+      flex: 1;
+      line-height: 1.4;
     }
 
     .investment-text {
@@ -398,6 +408,11 @@
       margin: 24px 0;
       display: inline-block;
       font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+    }
+    
+    a {
+      text-decoration: none;
     }
 
     .cta-button:hover {
@@ -522,10 +537,25 @@
 
       .offer-title {
         font-size: 32px;
+        margin-bottom: 24px;
+      }
+
+      .benefits-list {
+        max-width: 100%;
+        padding: 0 10px;
       }
 
       .benefit-item {
         font-size: 16px;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .checkmark {
+        width: 26px;
+        height: 26px;
+        min-width: 26px;
+        min-height: 26px;
       }
 
       .installment-price {
@@ -744,7 +774,7 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                         </span>
-                        <span>Conteúdo explícito</span>
+                        <span class="benefit-text">Conteúdo explícito</span>
                     </li>
                     <li class="benefit-item">
                         <span class="checkmark">
@@ -752,7 +782,7 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                         </span>
-                        <span>Aulas atualizadas</span>
+                        <span class="benefit-text">Aulas atualizadas</span>
                     </li>
                     <li class="benefit-item">
                         <span class="checkmark">
@@ -760,7 +790,7 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                         </span>
-                        <span>Método na prática <br>(sexo real)</span>
+                        <span class="benefit-text">Método na prática<br>(sexo real)</span>
                     </li>
                     <li class="benefit-item">
                         <span class="checkmark">
@@ -768,7 +798,7 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                         </span>
-                        <span>Garantia de 60 dias</span>
+                        <span class="benefit-text">Garantia de 60 dias</span>
                     </li>
                     
                 </ul>
@@ -1253,5 +1283,3 @@ function toggleFAQ(id) {
 </script>
 </body>
 </html>
-
-
