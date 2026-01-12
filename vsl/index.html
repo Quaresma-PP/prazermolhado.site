@@ -38,14 +38,14 @@
     .video-area {
       position: relative;
       max-width: 100%;
-      margin: 0 auto 30px auto;
+      margin: 0 auto 50px auto;
       padding: 0 15px;
     }
 
     @media (min-width: 769px) {
       .video-area {
         max-width: 830px;
-        margin-bottom: 120px;
+        margin-bottom: 80px;
       }
     }
 
@@ -487,7 +487,7 @@
 
       .video-area {
         padding: 0 10px;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
       }
 
       .video-wrapper {
@@ -591,10 +591,119 @@
       }
     }
 
-    /* ===== RODAPÉ ===== */
+    /* ================== COMENTÁRIOS CORRIGIDOS ================== */
+    .comments-wrapper {
+      max-width: 620px;
+      margin: 0 auto;
+      margin-top: 70px;
+      margin-bottom: 50px;
+      padding: 0 15px;
+      text-align: left;
+    }
+
+    .frase-topo {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: block;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .comments-section {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-family: Arial, Helvetica, sans-serif;
+      color: #050505;
+    }
+
+    .comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .comments-header .contador {
+      font-size: 15px;
+      font-weight: bold;
+      color: #050505;
+    }
+
+    .comments-header .relevantes {
+      font-size: 14px;
+      color: #65676b;
+      cursor: pointer;
+    }
+
+    .comment {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      align-items: flex-start;
+    }
+
+    .comment img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .comment-content {
+      display: flex;
+      flex-direction: column;
+      max-width: 90%;
+    }
+
+    .comment-body {
+      background: #f0f2f5;
+      border-radius: 18px;
+      padding: 10px 16px;
+      display: inline-block;
+    }
+
+    .comment-body strong {
+      font-size: 13px;
+      color: #050505;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .comment-text {
+      font-size: 14px;
+      line-height: 1.3;
+      color: #050505;
+    }
+
+    .comment-actions {
+      font-size: 12px;
+      color: #65676b;
+      margin-left: 12px;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .comments-wrapper {
+        margin-top: 50px;
+        margin-bottom: 40px;
+      }
+
+      .frase-topo {
+        font-size: 18px;
+      }
+    }
+
+    /* ===== RODAPÉ AJUSTADO ===== */
     .footer {
-      margin-top: 90px;
-      padding: 35px 20px;
+      margin-top: 40px;
+      padding: 30px 20px;
       border-top: 1px solid rgba(255, 0, 184, 0.25);
       text-align: center;
     }
@@ -606,6 +715,7 @@
       line-height: 1.6;
       color: #bfbfbf;
     }
+
   </style>
 
   <!-- VTURB PRELOADS DS -->
@@ -669,27 +779,126 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
 
 <body>
   <div class="container">
-    <div class="video-area">
+    <div class="video-area" >
       <div class="video-bg"></div>
 
       <div class="video-wrapper">
        <vturb-smartplayer id="vid-69608437e9321dd80f634e3a" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/69608437e9321dd80f634e3a/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+      </div>
     </div>
-  </div>
 
-  <br>
-  <br>
-  <br>
-    <br>
-  <br>
-  <br>
-    <br>
-<!-- DTC -->
-    <div id="elementoOculto" data-show-delay="465" style="display: none">
-   <!-- SEÇÃO DO CARROSSEL -->
+<style>
+  .video-area {
+    margin-bottom: 370px;
+  }
+  
+  @media (max-width: 768px) {
+    .video-area {
+      margin-bottom: 250px;
+    }
+  }
+</style>
+     <!-- COMENTÁRIOS (AGORA COM ESPAÇAMENTO ADEQUADO) -->
+    <div class="comments-wrapper">
+      <span class="frase-topo">Comentários Relevantes</span>
+      
+      <div class="comments-section">
+        <div class="comments-header">
+          <span class="contador">Mais relevantes ▼</span>
+          <span class="relevantes"></span>
+        </div>
+
+        <div class="comment">
+          <img src="https://i.pravatar.cc/40?img=5">
+          <div class="comment-content">
+            <div class="comment-body">
+              <strong>Isabela Nunes</strong>
+              <div class="comment-text">Quando o homem entende o prazer feminino, tudo muda. Conteúdo direto e real.</div>
+            </div>
+            <div class="comment-actions">Curtir · Responder · 3 h</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <img src="https://i.pravatar.cc/40?img=9">
+          <div class="comment-content">
+            <div class="comment-body">
+              <strong>Amanda Vieira</strong>
+              <div class="comment-text">A parte sobre conexão fez total sentido. Já senti diferença real no relacionamento.</div>
+            </div>
+            <div class="comment-actions">Curtir · Responder · 5 h</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <img src="https://i.pravatar.cc/40?img=11">
+          <div class="comment-content">
+            <div class="comment-body">
+              <strong>Gustavo Pires</strong>
+              <div class="comment-text">Eu achava que mandava bem, mas essa aula abriu minha mente para detalhes que eu ignorava.</div>
+            </div>
+            <div class="comment-actions">Curtir · Responder · 2 h</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <img src="https://i.pravatar.cc/40?img=12">
+          <div class="comment-content">
+            <div class="comment-body">
+              <strong>Vinícius Souza</strong>
+              <div class="comment-text">Nunca ninguém explicou isso desse jeito. Hoje me sinto muito mais confiante.</div>
+            </div>
+            <div class="comment-actions">Curtir · Responder · 6 h</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <img src="https://i.pravatar.cc/40?img=13">
+          <div class="comment-content">
+            <div class="comment-body">
+              <strong>Rafael Lopes</strong>
+              <div class="comment-text">Eu tinha muita insegurança, mas depois da aula tudo ficou mais natural.</div>
+            </div>
+            <div class="comment-actions">Curtir · Responder · 8 h</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <img src="https://i.pravatar.cc/40?img=14">
+          <div class="comment-content">
+            <div class="comment-body">
+              <strong>Bruno Martins</strong>
+              <div class="comment-text">Conteúdo prático e sem enrolação. Valeu muito o tempo investido.</div>
+            </div>
+            <div class="comment-actions">Curtir · Responder · 10 h</div>
+          </div>
+        </div>
+
+        <div class="comment">
+          <img src="https://i.pravatar.cc/40?img=18">
+          <div class="comment-content">
+            <div class="comment-body">
+              <strong>Ricardo Silva</strong>
+              <div class="comment-text">Apliquei o que você disse ontem e o resultado foi imediato. Obrigado!</div>
+            </div>
+            <div class="comment-actions">Curtir · Responder · 12 h</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  
+<!-- Fim comentários -->
+
+
+  <!-- DTC -->
+  <div id="elementoOculto" data-show-delay="465" style="display: none">
+
+    
+    <!-- SEÇÃO DO CARROSSEL -->
     <section class="carousel-section">
         <div class="header-section">
-            
             <h2 class="main-subtitle">Módulos que você vai ter acesso:</h2>
         </div>
 
@@ -708,10 +917,6 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
                         
                     </div>
                 </div>
-
-               
-
-              
 
                 <!-- Card 4 -->
                 <div class="card">
@@ -821,171 +1026,15 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
             </div>
         </div>
     </section>
+  </div>
 
-    <script>
-        let currentPosition = 0;
-        const wrapper = document.getElementById('carouselWrapper');
-        const cards = document.querySelectorAll('.card');
-        let cardWidth = 340 + 24;
-        let visibleCards = 4;
-        let autoPlayInterval;
-        let isTransitioning = false;
-
-        // Detecta se é mobile e ajusta variáveis
-        function updateCarouselSettings() {
-            if (window.innerWidth <= 768) {
-                visibleCards = 1;
-                cardWidth = window.innerWidth * 0.90 + 16; // 90vw + gap
-            } else {
-                visibleCards = 4;
-                cardWidth = 340 + 24;
-            }
-        }
-
-        // Atualiza ao carregar e ao redimensionar
-        updateCarouselSettings();
-        window.addEventListener('resize', () => {
-            updateCarouselSettings();
-            // Reposiciona o carrossel após resize
-            const offset = -currentPosition * cardWidth;
-            wrapper.style.transform = `translateX(${offset}px)`;
-        });
-
-        function moveCarousel(direction) {
-            if (isTransitioning) return;
-            
-            isTransitioning = true;
-            currentPosition += direction;
-
-            const maxPosition = cards.length - visibleCards;
-            
-            if (currentPosition < 0) {
-                currentPosition = 0;
-            } else if (currentPosition > maxPosition) {
-                currentPosition = maxPosition;
-            }
-
-            const offset = -currentPosition * cardWidth;
-            wrapper.style.transform = `translateX(${offset}px)`;
-
-            setTimeout(() => {
-                isTransitioning = false;
-            }, 800);
-
-            resetAutoPlay();
-        }
-
-        function autoPlay() {
-            autoPlayInterval = setInterval(() => {
-                if (currentPosition >= cards.length - visibleCards) {
-                    // Volta ao início
-                    currentPosition = 0;
-                    wrapper.style.transition = 'none';
-                    wrapper.style.transform = `translateX(0px)`;
-                    
-                    setTimeout(() => {
-                        wrapper.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                    }, 50);
-                } else {
-                    moveCarousel(1);
-                }
-            }, 4000);
-        }
-
-        function resetAutoPlay() {
-            clearInterval(autoPlayInterval);
-            autoPlay();
-        }
-
-        let startX = 0;
-        let startY = 0;
-        let isDragging = false;
-        let hasMoved = false;
-
-        // CORREÇÃO: Eventos touch melhorados
-        wrapper.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            isDragging = true;
-            hasMoved = false;
-        }, { passive: true });
-
-        wrapper.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            
-            const currentX = e.touches[0].clientX;
-            const currentY = e.touches[0].clientY;
-            const diffX = Math.abs(currentX - startX);
-            const diffY = Math.abs(currentY - startY);
-            
-            // Só previne o scroll se o movimento horizontal for maior que o vertical
-            if (diffX > diffY && diffX > 10) {
-                e.preventDefault();
-                hasMoved = true;
-            }
-        }, { passive: false });
-
-        wrapper.addEventListener('touchend', (e) => {
-            if (!isDragging || !hasMoved) return;
-            
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    moveCarousel(1);
-                } else {
-                    moveCarousel(-1);
-                }
-            }
-            isDragging = false;
-            hasMoved = false;
-        }, { passive: true });
-
-        // Mouse events para desktop
-        wrapper.addEventListener('mousedown', (e) => {
-            startX = e.clientX;
-            isDragging = true;
-            wrapper.style.cursor = 'grabbing';
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-        });
-
-        document.addEventListener('mouseup', (e) => {
-            if (!isDragging) return;
-            const endX = e.clientX;
-            const diff = startX - endX;
-
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    moveCarousel(1);
-                } else {
-                    moveCarousel(-1);
-                }
-            }
-            isDragging = false;
-            wrapper.style.cursor = 'grab';
-        });
-
-        autoPlay();
-
-        wrapper.addEventListener('mouseenter', () => {
-            clearInterval(autoPlayInterval);
-        });
-
-        wrapper.addEventListener('mouseleave', () => {
-            autoPlay();
-        });
-    </script>
-    </div>
+  <!-- RODAPÉ (MAIS PRÓXIMO DOS COMENTÁRIOS) -->
   <footer class="footer">
     <p>
       Este site não faz parte do Facebook ou do Facebook Inc. e não é endossado por eles. Facebook é uma marca registrada independente. O conteúdo apresentado é de caráter educacional. Não garantimos resultados específicos, pois eles variam de acordo com o esforço, dedicação e outros fatores fora do nosso controle. Depoimentos refletem experiências reais, mas não representam resultados garantidos.
     </p>
   </footer>
+
 <script>
   // Flag para controlar se os links já foram configurados
 let linksConfigured = false;
@@ -1283,8 +1332,167 @@ function toggleFAQ(id) {
         icon.classList.remove('fa-minus');
     }
 }
+
+// CARROSSEL SCRIPT
+let currentPosition = 0;
+const wrapper = document.getElementById('carouselWrapper');
+const cards = document.querySelectorAll('.card');
+let cardWidth = 340 + 24;
+let visibleCards = 4;
+let autoPlayInterval;
+let isTransitioning = false;
+
+// Detecta se é mobile e ajusta variáveis
+function updateCarouselSettings() {
+    if (window.innerWidth <= 768) {
+        visibleCards = 1;
+        cardWidth = window.innerWidth * 0.90 + 16; // 90vw + gap
+    } else {
+        visibleCards = 4;
+        cardWidth = 340 + 24;
+    }
+}
+
+// Atualiza ao carregar e ao redimensionar
+updateCarouselSettings();
+window.addEventListener('resize', () => {
+    updateCarouselSettings();
+    // Reposiciona o carrossel após resize
+    const offset = -currentPosition * cardWidth;
+    wrapper.style.transform = `translateX(${offset}px)`;
+});
+
+function moveCarousel(direction) {
+    if (isTransitioning) return;
+    
+    isTransitioning = true;
+    currentPosition += direction;
+
+    const maxPosition = cards.length - visibleCards;
+    
+    if (currentPosition < 0) {
+        currentPosition = 0;
+    } else if (currentPosition > maxPosition) {
+        currentPosition = maxPosition;
+    }
+
+    const offset = -currentPosition * cardWidth;
+    wrapper.style.transform = `translateX(${offset}px)`;
+
+    setTimeout(() => {
+        isTransitioning = false;
+    }, 800);
+
+    resetAutoPlay();
+}
+
+function autoPlay() {
+    autoPlayInterval = setInterval(() => {
+        if (currentPosition >= cards.length - visibleCards) {
+            // Volta ao início
+            currentPosition = 0;
+            wrapper.style.transition = 'none';
+            wrapper.style.transform = `translateX(0px)`;
+            
+            setTimeout(() => {
+                wrapper.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            }, 50);
+        } else {
+            moveCarousel(1);
+        }
+    }, 4000);
+}
+
+function resetAutoPlay() {
+    clearInterval(autoPlayInterval);
+    autoPlay();
+}
+
+let startX = 0;
+let startY = 0;
+let isDragging = false;
+let hasMoved = false;
+
+// CORREÇÃO: Eventos touch melhorados
+wrapper.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    hasMoved = false;
+}, { passive: true });
+
+wrapper.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const diffX = Math.abs(currentX - startX);
+    const diffY = Math.abs(currentY - startY);
+    
+    // Só previne o scroll se o movimento horizontal for maior que o vertical
+    if (diffX > diffY && diffX > 10) {
+        e.preventDefault();
+        hasMoved = true;
+    }
+}, { passive: false });
+
+wrapper.addEventListener('touchend', (e) => {
+    if (!isDragging || !hasMoved) return;
+    
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+            moveCarousel(1);
+        } else {
+            moveCarousel(-1);
+        }
+    }
+    isDragging = false;
+    hasMoved = false;
+}, { passive: true });
+
+// Mouse events para desktop
+wrapper.addEventListener('mousedown', (e) => {
+    startX = e.clientX;
+    isDragging = true;
+    wrapper.style.cursor = 'grabbing';
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+});
+
+document.addEventListener('mouseup', (e) => {
+    if (!isDragging) return;
+    const endX = e.clientX;
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+            moveCarousel(1);
+        } else {
+            moveCarousel(-1);
+        }
+    }
+    isDragging = false;
+    wrapper.style.cursor = 'grab';
+});
+
+autoPlay();
+
+wrapper.addEventListener('mouseenter', () => {
+    clearInterval(autoPlayInterval);
+});
+
+wrapper.addEventListener('mouseleave', () => {
+    autoPlay();
+});
 </script>
 </body>
 </html>
+
 
 
