@@ -21,7 +21,8 @@
       background: radial-gradient(circle at top, #57013e, #000000 70%);
       color: #ffffff;
       min-height: 100vh;
-      padding: 15px;
+      padding: 0;
+      margin: 0;
       overflow-x: hidden;
     }
 
@@ -34,29 +35,18 @@
       z-index: 2;
     }
 
-    .headline {
-      font-size: clamp(1.6rem, 5vw, 2.4rem);
-      font-weight: 800;
-      margin-bottom: 15px;
-      line-height: 1.2;
-    }
-
-    .headline span {
-      color: #b80084;
-    }
-
-    .subheadline {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #dddddd;
-      margin-bottom: 30px;
-    }
-
-    /* ===== VIDEO ===== */
     .video-area {
       position: relative;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 100%;
+      margin: 0 auto 30px auto;
+      padding: 0 15px;
+    }
+
+    @media (min-width: 769px) {
+      .video-area {
+        max-width: 830px;
+        margin-bottom: 120px;
+      }
     }
 
     .video-bg {
@@ -77,16 +67,14 @@
       position: relative;
       width: 100%;
       padding-bottom: 56.25%;
-      border-radius: 14px;
       overflow: visible;
-      box-shadow: 0 0 40px rgba(255, 0, 184, 0.25);
-      background: #000;
+      background: transparent;
       z-index: 2;
     }
 
     @media (max-width: 768px) {
       .video-wrapper {
-        border-radius: 12px;
+        overflow: hidden;
       }
     }
 
@@ -98,11 +86,12 @@
       height: 100%;
       display: block;
       z-index: 10;
+      border-radius: 0 !important;
     }
 
     /* ========== CARROSSEL STYLES ========== */
     .carousel-section {
-      padding: 60px 0;
+      padding: 60px 15px;
       width: 100%;
     }
 
@@ -268,7 +257,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 80px 20px;
+      padding: 80px 15px;
     }
 
     .offer-card {
@@ -488,17 +477,23 @@
     /* ===== RESPONSIVO ===== */
     @media (max-width: 768px) {
       body {
-        padding: 12px;
+        padding: 0;
       }
 
       .container {
-        padding: 0 5px;
+        padding: 0;
+        margin-top: 0;
       }
 
-      .subheadline {
-        font-size: 1rem;
+      .video-area {
+        padding: 0 10px;
+        margin-bottom: 20px;
       }
 
+      .video-wrapper {
+        overflow: visible;
+      }
+      
       .video-bg {
         display: none;
       }
@@ -674,8 +669,6 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
 
 <body>
   <div class="container">
-    
-
     <div class="video-area">
       <div class="video-bg"></div>
 
@@ -685,7 +678,8 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
   </div>
 
   <br>
-    <br>
+  <br>
+  <br>
 <!-- DTC -->
     <div id="elementoOculto" data-show-delay="465" style="display: none">
    <!-- SEÇÃO DO CARROSSEL -->
