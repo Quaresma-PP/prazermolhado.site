@@ -131,7 +131,7 @@
       transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       gap: 24px;
       padding: 0 24px;
-      touch-action: pan-y; /* IMPORTANTE: Permite scroll vertical */
+      touch-action: pan-y;
     }
 
     .card {
@@ -591,138 +591,243 @@
       }
     }
 
-    /* ================== COMENTÁRIOS CORRIGIDOS ================== */
-    .comments-wrapper {
-      max-width: 620px;
-      margin: 0 auto;
-      margin-top: 70px;
-      margin-bottom: 50px;
-      padding: 0 15px;
-      text-align: left;
-    }
+   /* ========== COMENTÁRIOS CORRIGIDOS ========== */
+   .comments-section {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: left;
+}
 
-    .frase-topo {
-      color: #ffffff;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      display: block;
-      font-family: 'Poppins', sans-serif;
-    }
+.comments-section h3 {
+    color: #1c1e21;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: left;
+}
 
+.comment {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.comment-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.comment-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* CORREÇÃO: Nome ao lado da foto */
+.comment-author {
+    font-weight: 600;
+    color: #385898;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.comment-text {
+    color: #050505;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    background-color: #f0f2f5;
+    padding: 0.7rem 0.9rem;
+    border-radius: 18px;
+    display: inline-block;
+    max-width: 100%;
+    word-wrap: break-word;
+    line-height: 1.4;
+}
+
+.comment-image {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 1rem;
+    color: #65676b;
+    font-size: 0.75rem;
+    font-weight: 600;
+    align-items: center;
+    padding-left: 0.5rem;
+}
+
+.comment-actions span {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.comment-actions span:hover {
+    text-decoration: underline;
+}
+
+.comment-replies {
+    margin-left: 3rem;
+    margin-top: 0.75rem;
+}
+
+.comment-reply {
+    margin-bottom: 1rem;
+}
+
+.comment-reply .comment {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0;
+}
+
+.comment-reply .comment-avatar {
+    width: 32px;
+    height: 32px;
+}
+
+.comment-reply .comment-author {
+    font-size: 0.85rem;
+}
+
+.comment-reply .comment-text {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
+}
+
+.comment-reply .comment-actions {
+    font-size: 0.7rem;
+}
+
+.like-button {
+    cursor: pointer;
+    color: #65676b;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.like-button:hover {
+    color: #1877f2;
+}
+
+.like-button.liked {
+    color: #1877f2;
+}
+
+.like-count {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #65676b;
+    margin-left: 4px;
+}
+
+.like-count img {
+    width: 14px;
+    height: 14px;
+    margin-right: 2px;
+}
+
+.time-ago {
+    color: #65676b;
+    font-size: 0.75rem;
+}
+
+/* ========== RODAPÉ CORRIGIDO ========== */
+.footer {
+    background: #1a0012;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 12px;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 60px;
+}
+
+.footer p {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
     .comments-section {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      font-family: Arial, Helvetica, sans-serif;
-      color: #050505;
+        padding: 1rem;
+        margin: 0 0.5rem 40px;
     }
 
-    .comments-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .comments-header .contador {
-      font-size: 15px;
-      font-weight: bold;
-      color: #050505;
-    }
-
-    .comments-header .relevantes {
-      font-size: 14px;
-      color: #65676b;
-      cursor: pointer;
-    }
-
-    .comment {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-      align-items: flex-start;
-    }
-
-    .comment img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .comment-content {
-      display: flex;
-      flex-direction: column;
-      max-width: 90%;
-    }
-
-    .comment-body {
-      background: #f0f2f5;
-      border-radius: 18px;
-      padding: 10px 16px;
-      display: inline-block;
-    }
-
-    .comment-body strong {
-      font-size: 13px;
-      color: #050505;
-      display: block;
-      margin-bottom: 2px;
+    .comment-replies {
+        margin-left: 2rem;
     }
 
     .comment-text {
-      font-size: 14px;
-      line-height: 1.3;
-      color: #050505;
+        font-size: 0.85rem;
+        padding: 0.6rem;
     }
 
-    .comment-actions {
-      font-size: 12px;
-      color: #65676b;
-      margin-left: 12px;
-      margin-top: 4px;
-      font-weight: 600;
+    .comment-image {
+        max-width: 250px;
     }
 
-    @media (max-width: 768px) {
-      .comments-wrapper {
-        margin-top: 50px;
-        margin-bottom: 40px;
-      }
-
-      .frase-topo {
-        font-size: 18px;
-      }
-    }
-
-    /* ===== RODAPÉ AJUSTADO ===== */
     .footer {
-      margin-top: 40px;
-      padding: 30px 20px;
-      border-top: 1px solid rgba(255, 0, 184, 0.25);
-      text-align: center;
+        font-size: 11px;
+        padding: 25px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comments-section {
+        padding: 0.8rem;
     }
 
-    .footer p {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 0.75rem;
-      line-height: 1.6;
-      color: #bfbfbf;
+    .comment-text {
+        font-size: 0.85rem;
+        padding: 0.6rem;
     }
 
+    .comment-replies {
+        margin-left: 1.5rem;
+    }
+
+    .comment-image {
+        max-width: 200px;
+    }
+
+    .footer {
+        font-size: 10px;
+        padding: 20px 10px;
+    }
+}
+   
   </style>
+  
 
   <!-- VTURB PRELOADS DS -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<link rel="preload" href="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/694efcd0ba8707e946bb33f4/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/69608437e9321dd80f634e3a/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/69444291c48d7588f4e5e987/main.m3u8" as="fetch">
+<link rel="preload" href="https://cdn.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/695b2589a64ebc639e763a28/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -764,6 +869,7 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+  <!-- Script Utm -->
   <script>
   window.pixelId = "6964d76d8c8132c427da9422";
   var a = document.createElement("script");
@@ -772,137 +878,185 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
   a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
   document.head.appendChild(a);
 </script>
-<script
+
+  <!-- fim -->
+  <script
   src="https://cdn.utmify.com.br/scripts/utms/latest.js"
   data-utmify-prevent-xcod-sck
   data-utmify-prevent-subids
   async
   defer
 ></script>
-  
-  <!-- fim -->
-  
 </head>
-
 <body>
+
   <div class="container">
     <div class="video-area" >
       <div class="video-bg"></div>
 
       <div class="video-wrapper">
-       <vturb-smartplayer id="vid-694efcd0ba8707e946bb33f4" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/694efcd0ba8707e946bb33f4/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+       <vturb-smartplayer id="vid-69608437e9321dd80f634e3a" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/69608437e9321dd80f634e3a/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
       </div>
     </div>
 
+
+<div class="comments-section">
+            <h3>Comentários</h3>
+
+                <!-- Gustavo Martins -->
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="imagens/Gustavo Martins.jpg" alt="Gustavo Martins">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-author">Gustavo Martins</div>
+                        <div class="comment-text">Testei o truque do dedo indicador na minha mulher, eu nunca vi ela ficar tão molhada, ela gritava de prazer…</div>
+                        <div class="comment-actions">
+                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                            <span>Responder</span>
+                            <span class="like-count">
+                                <img src="imagens/fblike.webp" alt="like">2.134
+                            </span>
+                            <span class="time-ago">1h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arnaldo Quintana -->
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="imagens/Arnaldo Quintana.jpg" alt="Arnaldo Quintana">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-author">Arnaldo Quintana</div>
+                        <div class="comment-text">Depois das aulas descobri que estava chupando minha namorada de forma errada, antes eu passava 2 minutos ela não gozava, agora com menos de 1 minuto ela tá gozando</div>
+                        <div class="comment-actions">
+                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                            <span>Responder</span>
+                            <span class="like-count">
+                                <img src="imagens/fblike.webp" alt="like">2.001
+                            </span>
+                            <span class="time-ago">1h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- José Alexandre -->
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="imagens/José Alexandre.jpg" alt="José Alexandre">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-author">José Alexandre</div>
+                        <div class="comment-text">Gostei das aulas, a professora vai direto ao ponto e mostra na prática com mulheres e homens</div>
+                        <div class="comment-actions">
+                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                            <span>Responder</span>
+                            <span class="like-count">
+                                <img src="imagens/fblike.webp" alt="like">1.654
+                            </span>
+                            <span class="time-ago">1h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ismael Batista -->
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="imagens/Ismael Batista.png" alt="Ismael Batista">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-author">Ismael Batista</div>
+                        <div class="comment-text">Testei a técnica que aprendi a na aula 3 e recebi essa mensagem da minha mulher:</div>
+                        <img src="imagens/whats.png" alt="Mensagem da esposa" class="comment-image">
+                        <div class="comment-actions">
+                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                            <span>Responder</span>
+                            <span class="like-count">
+                                <img src="imagens/fblike.webp" alt="like">1.361
+                            </span>
+                            <span class="time-ago">2d</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pedro Romualdo -->
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="imagens/roberto-menezes.webp" alt="Pedro Romualdo">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-author">Pedro Romualdo</div>
+                        <div class="comment-text">Tenho 63 anos e minha mulher 38, sempre tive medo dela encontrar um cara mais novo, mas depois dessas aulas parece que ela quer transar todo dia</div>
+                        <div class="comment-actions">
+                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                            <span>Responder</span>
+                            <span class="like-count">
+                                <img src="imagens/fblike.webp" alt="like">412
+                            </span>
+                            <span class="time-ago">2d</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vagner Franciolo -->
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="imagens/Vagner Franciolo.jpg" alt="Vagner Franciolo">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-author">Vagner Franciolo</div>
+                        <div class="comment-text">Aulas são tão boas que você sente vontade de gozar a cada segundos</div>
+                        <div class="comment-actions">
+                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                            <span>Responder</span>
+                            <span class="like-count">
+                                <img src="imagens/fblike.webp" alt="like">312
+                            </span>
+                            <span class="time-ago">2d</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pedro Marcelino -->
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="imagens/Pedro Marcelino.jpg" alt="Pedro Marcelino">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-author">Pedro Marcelino</div>
+                        <div class="comment-text">Eu sentia que minha mulher tava fingindo orgasmo e me sentia culpado por não ser bom na cama, mas ontem pela primeira vez ela gozou. eu tou feliz</div>
+                        <div class="comment-actions">
+                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                            <span>Responder</span>
+                            <span class="like-count">
+                                <img src="imagens/fblike.webp" alt="like">267
+                            </span>
+                            <span class="time-ago">2d</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+    </div>
+
+
 <style>
   .video-area {
-    margin-bottom: 370px;
+    margin-bottom: 350px;
   }
   
   @media (max-width: 768px) {
     .video-area {
-      margin-bottom: 250px;
+      margin-bottom: 240px;
     }
   }
 </style>
-     <!-- COMENTÁRIOS (AGORA COM ESPAÇAMENTO ADEQUADO) -->
-    <div class="comments-wrapper">
-      <span class="frase-topo">Comentários Relevantes</span>
-      
-      <div class="comments-section">
-        <div class="comments-header">
-          <span class="contador">Mais relevantes ▼</span>
-          <span class="relevantes"></span>
-        </div>
-
-        <div class="comment">
-          <img src="https://i.pravatar.cc/40?img=5">
-          <div class="comment-content">
-            <div class="comment-body">
-              <strong>Isabela Nunes</strong>
-              <div class="comment-text">Quando o homem entende o prazer feminino, tudo muda. Conteúdo direto e real.</div>
-            </div>
-            <div class="comment-actions">Curtir · Responder · 3 h</div>
-          </div>
-        </div>
-
-        <div class="comment">
-          <img src="https://i.pravatar.cc/40?img=9">
-          <div class="comment-content">
-            <div class="comment-body">
-              <strong>Amanda Vieira</strong>
-              <div class="comment-text">A parte sobre conexão fez total sentido. Já senti diferença real no relacionamento.</div>
-            </div>
-            <div class="comment-actions">Curtir · Responder · 5 h</div>
-          </div>
-        </div>
-
-        <div class="comment">
-          <img src="https://i.pravatar.cc/40?img=11">
-          <div class="comment-content">
-            <div class="comment-body">
-              <strong>Gustavo Pires</strong>
-              <div class="comment-text">Eu achava que mandava bem, mas essa aula abriu minha mente para detalhes que eu ignorava.</div>
-            </div>
-            <div class="comment-actions">Curtir · Responder · 2 h</div>
-          </div>
-        </div>
-
-        <div class="comment">
-          <img src="https://i.pravatar.cc/40?img=12">
-          <div class="comment-content">
-            <div class="comment-body">
-              <strong>Vinícius Souza</strong>
-              <div class="comment-text">Nunca ninguém explicou isso desse jeito. Hoje me sinto muito mais confiante.</div>
-            </div>
-            <div class="comment-actions">Curtir · Responder · 6 h</div>
-          </div>
-        </div>
-
-        <div class="comment">
-          <img src="https://i.pravatar.cc/40?img=13">
-          <div class="comment-content">
-            <div class="comment-body">
-              <strong>Rafael Lopes</strong>
-              <div class="comment-text">Eu tinha muita insegurança, mas depois da aula tudo ficou mais natural.</div>
-            </div>
-            <div class="comment-actions">Curtir · Responder · 8 h</div>
-          </div>
-        </div>
-
-        <div class="comment">
-          <img src="https://i.pravatar.cc/40?img=14">
-          <div class="comment-content">
-            <div class="comment-body">
-              <strong>Bruno Martins</strong>
-              <div class="comment-text">Conteúdo prático e sem enrolação. Valeu muito o tempo investido.</div>
-            </div>
-            <div class="comment-actions">Curtir · Responder · 10 h</div>
-          </div>
-        </div>
-
-        <div class="comment">
-          <img src="https://i.pravatar.cc/40?img=18">
-          <div class="comment-content">
-            <div class="comment-body">
-              <strong>Ricardo Silva</strong>
-              <div class="comment-text">Apliquei o que você disse ontem e o resultado foi imediato. Obrigado!</div>
-            </div>
-            <div class="comment-actions">Curtir · Responder · 12 h</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  
-<!-- Fim comentários -->
-
 
   <!-- DTC -->
   <div id="elementoOculto" data-show-delay="465" style="display: none">
 
-    
     <!-- SEÇÃO DO CARROSSEL -->
     <section class="carousel-section">
         <div class="header-section">
@@ -1034,8 +1188,8 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
         </div>
     </section>
   </div>
-
-  <!-- RODAPÉ (MAIS PRÓXIMO DOS COMENTÁRIOS) -->
+  
+  <!-- RODAPÉ -->
   <footer class="footer">
     <p>
       Este site não faz parte do Facebook ou do Facebook Inc. e não é endossado por eles. Facebook é uma marca registrada independente. O conteúdo apresentado é de caráter educacional. Não garantimos resultados específicos, pois eles variam de acordo com o esforço, dedicação e outros fatores fora do nosso controle. Depoimentos refletem experiências reais, mas não representam resultados garantidos.
@@ -1151,6 +1305,10 @@ window.addEventListener('load', () => {
     setupLinks();
     startPulseAnimation();
 });
+
+function toggleLike(element) {
+    element.classList.toggle('liked');
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     var elementoOculto = document.getElementById('elementoOculto');
@@ -1349,22 +1507,19 @@ let visibleCards = 4;
 let autoPlayInterval;
 let isTransitioning = false;
 
-// Detecta se é mobile e ajusta variáveis
 function updateCarouselSettings() {
     if (window.innerWidth <= 768) {
         visibleCards = 1;
-        cardWidth = window.innerWidth * 0.90 + 16; // 90vw + gap
+        cardWidth = window.innerWidth * 0.90 + 16;
     } else {
         visibleCards = 4;
         cardWidth = 340 + 24;
     }
 }
 
-// Atualiza ao carregar e ao redimensionar
 updateCarouselSettings();
 window.addEventListener('resize', () => {
     updateCarouselSettings();
-    // Reposiciona o carrossel após resize
     const offset = -currentPosition * cardWidth;
     wrapper.style.transform = `translateX(${offset}px)`;
 });
@@ -1396,7 +1551,6 @@ function moveCarousel(direction) {
 function autoPlay() {
     autoPlayInterval = setInterval(() => {
         if (currentPosition >= cards.length - visibleCards) {
-            // Volta ao início
             currentPosition = 0;
             wrapper.style.transition = 'none';
             wrapper.style.transform = `translateX(0px)`;
@@ -1420,7 +1574,6 @@ let startY = 0;
 let isDragging = false;
 let hasMoved = false;
 
-// CORREÇÃO: Eventos touch melhorados
 wrapper.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
@@ -1436,7 +1589,6 @@ wrapper.addEventListener('touchmove', (e) => {
     const diffX = Math.abs(currentX - startX);
     const diffY = Math.abs(currentY - startY);
     
-    // Só previne o scroll se o movimento horizontal for maior que o vertical
     if (diffX > diffY && diffX > 10) {
         e.preventDefault();
         hasMoved = true;
@@ -1460,7 +1612,6 @@ wrapper.addEventListener('touchend', (e) => {
     hasMoved = false;
 }, { passive: true });
 
-// Mouse events para desktop
 wrapper.addEventListener('mousedown', (e) => {
     startX = e.clientX;
     isDragging = true;
@@ -1500,9 +1651,3 @@ wrapper.addEventListener('mouseleave', () => {
 </script>
 </body>
 </html>
-
-
-
-
-
-
