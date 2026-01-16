@@ -70,6 +70,7 @@
       overflow: hidden;
       background: transparent;
       z-index: 2;
+      border-radius: 8px;
     }
 
     vturb-smartplayer {
@@ -81,6 +82,21 @@
       display: block;
       z-index: 3;
       border-radius: 0 !important;
+    }
+
+    /* Ajuste para elementos internos do Vturb */
+    vturb-smartplayer * {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Garante que banners do player fiquem dentro do container */
+    vturb-smartplayer [class*="banner"],
+    vturb-smartplayer [class*="notification"],
+    vturb-smartplayer [class*="message"] {
+      max-width: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
     }
 
     /* ========== CARROSSEL STYLES ========== */
@@ -492,6 +508,7 @@
 
       .video-wrapper {
         overflow: hidden;
+        border-radius: 8px;
       }
       
       .video-bg {
