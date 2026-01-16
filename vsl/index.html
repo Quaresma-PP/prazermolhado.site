@@ -24,6 +24,7 @@
       padding: 0;
       margin: 0;
       overflow-x: hidden;
+      position: relative;
     }
 
     .container {
@@ -32,20 +33,22 @@
       margin: 0 auto;
       text-align: center;
       position: relative;
-      z-index: 2;
+      z-index: 10;
     }
 
     .video-area {
       position: relative;
       max-width: 100%;
-      margin: 0 auto 50px auto;
+      margin: 0 auto 150px auto;
       padding: 0 15px;
+      padding-bottom: 80px; /* Espaço extra para os botões da VTurb */
     }
 
     @media (min-width: 769px) {
       .video-area {
         max-width: 830px;
-        margin-bottom: 80px;
+        margin-bottom: 180px;
+        padding-bottom: 100px; /* Espaço extra desktop */
       }
     }
 
@@ -91,8 +94,10 @@
 
     /* ========== CARROSSEL STYLES ========== */
     .carousel-section {
-      padding: 60px 15px;
+      padding: 100px 15px 60px;
       width: 100%;
+      position: relative;
+      z-index: 5;
     }
 
     .header-section {
@@ -143,6 +148,7 @@
       flex-shrink: 0;
       cursor: pointer;
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
     }
 
     .card:hover {
@@ -487,7 +493,8 @@
 
       .video-area {
         padding: 0 10px;
-        margin-bottom: 40px;
+        margin-bottom: 120px;
+        padding-bottom: 80px; /* Voltei para 80px */
       }
 
       .video-wrapper {
@@ -509,6 +516,7 @@
       .carousel-section {
         margin-left: 0;
         width: 100%;
+        padding: 40px 15px 60px; /* Diminuí de 80px para 40px */
       }
 
       .carousel-wrapper {
@@ -594,12 +602,14 @@
    /* ========== COMENTÁRIOS CORRIGIDOS ========== */
    .comments-section {
     max-width: 800px;
-    margin: 0 auto 40px;
+    margin: 60px auto 40px; /* 60px de margem superior */
     background: #fff;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     text-align: left;
+    position: relative;
+    z-index: 100;
 }
 
 .comments-section h3 {
@@ -636,7 +646,6 @@
     min-width: 0;
 }
 
-/* CORREÇÃO: Nome ao lado da foto */
 .comment-author {
     font-weight: 600;
     color: #385898;
@@ -763,6 +772,9 @@
     line-height: 1.6;
     font-family: 'Poppins', sans-serif;
     margin-top: 60px;
+    position: relative;
+    z-index: 100;
+    clear: both;
 }
 
 .footer p {
@@ -774,7 +786,7 @@
 @media (max-width: 768px) {
     .comments-section {
         padding: 1rem;
-        margin: 0 0.5rem 40px;
+        margin: 30px 0.5rem 40px; /* Diminuí de 60px para 30px */
     }
 
     .comment-replies {
@@ -799,6 +811,7 @@
 @media (max-width: 480px) {
     .comments-section {
         padding: 0.8rem;
+        margin: 20px 0.5rem 40px; /* Diminuí de 50px para 20px */
     }
 
     .comment-text {
@@ -825,12 +838,12 @@
 
   <!-- VTURB PRELOADS DS -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<link rel="preload" href="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/69608437e9321dd80f634e3a/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/ab-test/69698550ee16fa493dfa5a9f/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/695b2589a64ebc639e763a28/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://m3u8.vturb.net">
 <link rel="dns-prefetch" href="https://api.vturb.com.br">
 
  <!-- Meta Pixel Code -->
@@ -895,167 +908,13 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
       <div class="video-bg"></div>
 
       <div class="video-wrapper">
-       <vturb-smartplayer id="vid-69608437e9321dd80f634e3a" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/players/69608437e9321dd80f634e3a/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+      <vturb-smartplayer id="ab-69698550ee16fa493dfa5a9f" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/beb06ebc-0219-4b97-b88f-8ccab6eb2442/ab-test/69698550ee16fa493dfa5a9f/player.js", s.async=!0,document.head.appendChild(s); </script>
       </div>
     </div>
-
-
-<div class="comments-section">
-            <h3>Comentários</h3>
-
-                <!-- Gustavo Martins -->
-                <div class="comment">
-                    <div class="comment-avatar">
-                        <img src="imagens/Gustavo Martins.jpg" alt="Gustavo Martins">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-author">Gustavo Martins</div>
-                        <div class="comment-text">Testei o truque do dedo indicador na minha mulher, eu nunca vi ela ficar tão molhada, ela gritava de prazer…</div>
-                        <div class="comment-actions">
-                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
-                            <span>Responder</span>
-                            <span class="like-count">
-                                <img src="imagens/fblike.webp" alt="like">2.134
-                            </span>
-                            <span class="time-ago">1h</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Arnaldo Quintana -->
-                <div class="comment">
-                    <div class="comment-avatar">
-                        <img src="imagens/Arnaldo Quintana.jpg" alt="Arnaldo Quintana">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-author">Arnaldo Quintana</div>
-                        <div class="comment-text">Depois das aulas descobri que estava chupando minha namorada de forma errada, antes eu passava 2 minutos ela não gozava, agora com menos de 1 minuto ela tá gozando</div>
-                        <div class="comment-actions">
-                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
-                            <span>Responder</span>
-                            <span class="like-count">
-                                <img src="imagens/fblike.webp" alt="like">2.001
-                            </span>
-                            <span class="time-ago">1h</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- José Alexandre -->
-                <div class="comment">
-                    <div class="comment-avatar">
-                        <img src="imagens/José Alexandre.jpg" alt="José Alexandre">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-author">José Alexandre</div>
-                        <div class="comment-text">Gostei das aulas, a professora vai direto ao ponto e mostra na prática com mulheres e homens</div>
-                        <div class="comment-actions">
-                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
-                            <span>Responder</span>
-                            <span class="like-count">
-                                <img src="imagens/fblike.webp" alt="like">1.654
-                            </span>
-                            <span class="time-ago">1h</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ismael Batista -->
-                <div class="comment">
-                    <div class="comment-avatar">
-                        <img src="imagens/Ismael Batista.png" alt="Ismael Batista">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-author">Ismael Batista</div>
-                        <div class="comment-text">Testei a técnica que aprendi a na aula 3 e recebi essa mensagem da minha mulher:</div>
-                        <img src="imagens/whats.png" alt="Mensagem da esposa" class="comment-image">
-                        <div class="comment-actions">
-                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
-                            <span>Responder</span>
-                            <span class="like-count">
-                                <img src="imagens/fblike.webp" alt="like">1.361
-                            </span>
-                            <span class="time-ago">2d</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pedro Romualdo -->
-                <div class="comment">
-                    <div class="comment-avatar">
-                        <img src="imagens/roberto-menezes.webp" alt="Pedro Romualdo">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-author">Pedro Romualdo</div>
-                        <div class="comment-text">Tenho 63 anos e minha mulher 38, sempre tive medo dela encontrar um cara mais novo, mas depois dessas aulas parece que ela quer transar todo dia</div>
-                        <div class="comment-actions">
-                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
-                            <span>Responder</span>
-                            <span class="like-count">
-                                <img src="imagens/fblike.webp" alt="like">412
-                            </span>
-                            <span class="time-ago">2d</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Vagner Franciolo -->
-                <div class="comment">
-                    <div class="comment-avatar">
-                        <img src="imagens/Vagner Franciolo.jpg" alt="Vagner Franciolo">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-author">Vagner Franciolo</div>
-                        <div class="comment-text">Aulas são tão boas que você sente vontade de gozar a cada segundos</div>
-                        <div class="comment-actions">
-                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
-                            <span>Responder</span>
-                            <span class="like-count">
-                                <img src="imagens/fblike.webp" alt="like">312
-                            </span>
-                            <span class="time-ago">2d</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pedro Marcelino -->
-                <div class="comment">
-                    <div class="comment-avatar">
-                        <img src="imagens/Pedro Marcelino.jpg" alt="Pedro Marcelino">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-author">Pedro Marcelino</div>
-                        <div class="comment-text">Eu sentia que minha mulher tava fingindo orgasmo e me sentia culpado por não ser bom na cama, mas ontem pela primeira vez ela gozou. eu tou feliz</div>
-                        <div class="comment-actions">
-                            <span class="like-button" onclick="toggleLike(this)">Curtir</span>
-                            <span>Responder</span>
-                            <span class="like-count">
-                                <img src="imagens/fblike.webp" alt="like">267
-                            </span>
-                            <span class="time-ago">2d</span>
-                        </div>
-                    </div>
-                </div>
-
-                
-            </div>
-    </div>
-
-
-<style>
-  .video-area {
-    margin-bottom: 350px;
-  }
-  
-  @media (max-width: 768px) {
-    .video-area {
-      margin-bottom: 240px;
-    }
-  }
-</style>
+  </div>
 
   <!-- DTC -->
-  <div id="elementoOculto" data-show-delay="465" style="display: none">
+  <div id="elementoOculto" data-show-delay="465" style="display: none; position: relative; z-index: 5;">
 
     <!-- SEÇÃO DO CARROSSEL -->
     <section class="carousel-section">
@@ -1130,64 +989,149 @@ src="https://www.facebook.com/tr?id=4079932298944802&ev=PageView&noscript=1"
         </div>
     </section>
 
-    <!-- SEÇÃO DE OFERTA -->
-    <section class="offer-section">
-        <div class="offer-card">
-            <div class="content-wrapper">
-                <h1 class="offer-title">Segredos do Orgasmo</h1>
-                
-                <ul class="benefits-list">
-                    <li class="benefit-item">
-                        <span class="checkmark">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </span>
-                        <span class="benefit-text">Conteúdo explícito</span>
-                    </li>
-                    <li class="benefit-item">
-                        <span class="checkmark">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </span>
-                        <span class="benefit-text">Aulas atualizadas</span>
-                    </li>
-                    <li class="benefit-item">
-                        <span class="checkmark">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </span>
-                        <span class="benefit-text">Método na prática<br>(sexo real)</span>
-                    </li>
-                    <li class="benefit-item">
-                        <span class="checkmark">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </span>
-                        <span class="benefit-text">Garantia de 60 dias</span>
-                    </li>
-                    
-                </ul>
+  </div>
+  <!-- FIM DIV ELEMENTO OCULTO (só carrossel) -->
 
-                <p class="investment-text">
-                    O investimento necessário para se <strong>tornar uma máquina na cama</strong>, é de...
-                </p>
+  <!-- SEÇÃO DE COMENTÁRIOS - SEMPRE VISÍVEL -->
+  <div class="comments-section">
+    <h3>Comentários</h3>
 
-                <div class="price-container">
-                    <div class="installment-price">12 x R$ 7,23</div>
-                    <div class="full-price">À vista 69,90.</div>
-                </div>
-<a href="https://checkout.ticto.app/OA2A658C3">
-                <button class="cta-button">Acessar Agora</button>
-</a>
-               
+    <!-- Gustavo Martins -->
+    <div class="comment">
+        <div class="comment-avatar">
+            <img src="imagens/Gustavo Martins.jpg" alt="Gustavo Martins">
+        </div>
+        <div class="comment-content">
+            <div class="comment-author">Gustavo Martins</div>
+            <div class="comment-text">Testei o truque do dedo indicador na minha mulher, eu nunca vi ela ficar tão molhada, ela gritava de prazer…</div>
+            <div class="comment-actions">
+                <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                <span>Responder</span>
+                <span class="like-count">
+                    <img src="imagens/fblike.webp" alt="like">2.134
+                </span>
+                <span class="time-ago">1h</span>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Arnaldo Quintana -->
+    <div class="comment">
+        <div class="comment-avatar">
+            <img src="imagens/Arnaldo Quintana.jpg" alt="Arnaldo Quintana">
+        </div>
+        <div class="comment-content">
+            <div class="comment-author">Arnaldo Quintana</div>
+            <div class="comment-text">Depois das aulas descobri que estava chupando minha namorada de forma errada, antes eu passava 2 minutos ela não gozava, agora com menos de 1 minuto ela tá gozando</div>
+            <div class="comment-actions">
+                <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                <span>Responder</span>
+                <span class="like-count">
+                    <img src="imagens/fblike.webp" alt="like">2.001
+                </span>
+                <span class="time-ago">1h</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- José Alexandre -->
+    <div class="comment">
+        <div class="comment-avatar">
+            <img src="imagens/José Alexandre.jpg" alt="José Alexandre">
+        </div>
+        <div class="comment-content">
+            <div class="comment-author">José Alexandre</div>
+            <div class="comment-text">Gostei das aulas, a professora vai direto ao ponto e mostra na prática com mulheres e homens</div>
+            <div class="comment-actions">
+                <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                <span>Responder</span>
+                <span class="like-count">
+                    <img src="imagens/fblike.webp" alt="like">1.654
+                </span>
+                <span class="time-ago">1h</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ismael Batista -->
+    <div class="comment">
+        <div class="comment-avatar">
+            <img src="imagens/Ismael Batista.png" alt="Ismael Batista">
+        </div>
+        <div class="comment-content">
+            <div class="comment-author">Ismael Batista</div>
+            <div class="comment-text">Testei a técnica que aprendi a na aula 3 e recebi essa mensagem da minha mulher:</div>
+            <img src="imagens/whats.png" alt="Mensagem da esposa" class="comment-image">
+            <div class="comment-actions">
+                <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                <span>Responder</span>
+                <span class="like-count">
+                    <img src="imagens/fblike.webp" alt="like">1.361
+                </span>
+                <span class="time-ago">2d</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pedro Romualdo -->
+    <div class="comment">
+        <div class="comment-avatar">
+            <img src="imagens/roberto-menezes.webp" alt="Pedro Romualdo">
+        </div>
+        <div class="comment-content">
+            <div class="comment-author">Pedro Romualdo</div>
+            <div class="comment-text">Tenho 63 anos e minha mulher 38, sempre tive medo dela encontrar um cara mais novo, mas depois dessas aulas parece que ela quer transar todo dia</div>
+            <div class="comment-actions">
+                <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                <span>Responder</span>
+                <span class="like-count">
+                    <img src="imagens/fblike.webp" alt="like">412
+                </span>
+                <span class="time-ago">2d</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vagner Franciolo -->
+    <div class="comment">
+        <div class="comment-avatar">
+            <img src="imagens/Vagner Franciolo.jpg" alt="Vagner Franciolo">
+        </div>
+        <div class="comment-content">
+            <div class="comment-author">Vagner Franciolo</div>
+            <div class="comment-text">Aulas são tão boas que você sente vontade de gozar a cada segundos</div>
+            <div class="comment-actions">
+                <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                <span>Responder</span>
+                <span class="like-count">
+                    <img src="imagens/fblike.webp" alt="like">312
+                </span>
+                <span class="time-ago">2d</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pedro Marcelino -->
+    <div class="comment">
+        <div class="comment-avatar">
+            <img src="imagens/Pedro Marcelino.jpg" alt="Pedro Marcelino">
+        </div>
+        <div class="comment-content">
+            <div class="comment-author">Pedro Marcelino</div>
+            <div class="comment-text">Eu sentia que minha mulher tava fingindo orgasmo e me sentia culpado por não ser bom na cama, mas ontem pela primeira vez ela gozou. eu tou feliz</div>
+            <div class="comment-actions">
+                <span class="like-button" onclick="toggleLike(this)">Curtir</span>
+                <span>Responder</span>
+                <span class="like-count">
+                    <img src="imagens/fblike.webp" alt="like">267
+                </span>
+                <span class="time-ago">2d</span>
+            </div>
+        </div>
+    </div>
   </div>
+  <!-- FIM SEÇÃO DE COMENTÁRIOS -->
+
   
   <!-- RODAPÉ -->
   <footer class="footer">
